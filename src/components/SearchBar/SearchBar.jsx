@@ -1,14 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './SearchBar.css';
 
 
-const SearchBar = () => {
+const SearchBar = (props) => {
+
+    const [text, setText] = useState("");
+
+    const onChange = event => {
+        event.stopPropagation();
+        setText(event.target.value);
+    }
+
+    const onClick = event => {
+        event.preventDefault();
+        event.stopPropagation();
+        props.setSearch(text);
+        setText("");
+    }
 
     return (
-      <div >
-        <label htmlFor="searchBar">Search</label>
-        <input type="text" />
-      </div>
+          <form>
+             <label htmlFor="searchBar">Search</label>
+             <input type="text" onChange={event => onChange(event)} value={text}/>
+            <button onClick={event => onClick(event)}>Submit</button>
+          </form>
     );
   };
   

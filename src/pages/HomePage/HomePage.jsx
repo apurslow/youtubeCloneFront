@@ -1,24 +1,38 @@
 
-import React from "react";
-import { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import axios from 'axios';
 import AuthContext from "../../context/AuthContext";
 import SearchBar  from "../../components/SearchBar/SearchBar";
 import VideoDisplay from "../../components/VideoDisplay/VideoDisplay";
-import NewComment from "../../components/NewComment/NewComment";
-import Comments from "../../components/Comments/Comments";
+import NewPost from "../../components/NewPost/NewPost";
+import Post from "../../components/Post/Post";
 
 const HomePage = () => {
   const { user } = useContext(AuthContext);
+  const [search, setSearch] = useState("");
+  const [videoId, setVideoId] = useState(null);
+  const api = 'AIzaSyBG3guy9WB82-9GPuQuAFPGRf31YO2tlUU';
+
+  const videoSearch = () => {
+      axios.get(`https://www.googleapis.com/youtube/v3/search?q=${search}&key=${api}`)
+      .then(res => setVideoId(res.data.items[0].id.videoId));
+  }
+
+  useEffect(() => {
+      videoSearch();
+  },[search])
+
   return (
     <div>
       <h1 className="container">Home Page for {user.name}!</h1>
-      <SearchBar />
+      <SearchBar setSearch={setSearch}/>
       <VideoDisplay 
         width="650"
         height="450"
-        link={`https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"`}/>
-      <NewComment />
-      <Comments />
+        videoId={videoId}
+      />
+      <NewPost videoId={videoId}/>
+      <Post videoId={videoId}/>
     </div>
 
     //search bar
