@@ -4,8 +4,10 @@ import axios from 'axios';
 import AuthContext from "../../context/AuthContext";
 import SearchBar  from "../../components/SearchBar/SearchBar";
 import VideoDisplay from "../../components/VideoDisplay/VideoDisplay";
+import NewPost from "../../components/NewPost/NewPost";
 import Post from "../../components/Post/Post";
 import TitleDescription from "../../components/TitleDescription/TitleDescription";
+import RelatedVideos from "../../components/RelatedVideos/RelatedVideos";
 
 const HomePage = () => {
   const { user } = useContext(AuthContext);
@@ -36,13 +38,10 @@ const HomePage = () => {
       />
       <TitleDescription videoId={videoId} api={api} />
       <Post videoId={videoId}/>
+      <RelatedVideos videoId={videoId} api={api} setVideoId={setVideoId}/>
       </>
       }
     </div>
-
-    //search bar
-    //on search, reveal video, and all comments/postings associated with the video
-    //when video is showing, form should show to allow new comment on a video
   );
 };
 

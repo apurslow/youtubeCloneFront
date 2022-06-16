@@ -12,6 +12,7 @@ const Posts = (props) => {
     
     const { user } = useContext(AuthContext);
     const [posts, setPosts] = useState([]);
+    const [updatePost, setUpdatePost] = useState("");
     const videoId = useRef(props.videoId)
 
 
@@ -55,6 +56,22 @@ const Posts = (props) => {
             .catch(ex => console.log(`There was an error: ${ex}`));
     }
 
+    const showHideEditDiv = (index) => {
+        document.getElementById(index).style.display === "block" ?
+            document.getElementById(index).style.display = "none":
+            document.getElementById(index).style.display = "block"
+    }
+
+    const editPost = (postId) => {
+        axios.put(`http://localhost:5000/api/posts/${postId}`, {
+            name: user.name,
+            text: updatePost,
+            videoId: videoId.current
+        })
+        .then(res => console.log(res))
+        .catch(ex => console.log(ex));
+    }
+
     return (
       <div>
           <NewPost videoId={props.videoId} user={user}/>
@@ -66,8 +83,20 @@ const Posts = (props) => {
                     <p id='postDate'>{post.date}</p>
                     {user.name === post.name ? 
                         <div>
-                            <button class="postButtons">Edit</button>
-                            <button class="postButtons" onClick={()=>
+                            <div id={index} style={{display:"none"}}>
+                                <textarea value={updatePost} onChange={(event)=>setUpdatePost(event.target.value)}></textarea>
+                                <button onClick={()=> {
+                                    editPost(post._id);
+                                    showHideEditDiv(index);
+                                    }
+                                }>Update</button>
+                            </div>
+                            <button onClick={()=> {
+                                showHideEditDiv(index); 
+                                setUpdatePost(post.text);
+                                }
+                            }>Edit</button>
+                            <button onClick={()=>
                                  deletePost(post._id)
                             }>Delete</button>
                         </div> :
