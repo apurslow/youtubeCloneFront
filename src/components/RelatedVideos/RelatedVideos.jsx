@@ -4,11 +4,9 @@ import axios from "axios";
 const RelatedVideos = (props) => {
   const [relatedArr, setRelatedArr] = useState("");
 
-  //   function handleClick(event, relatedVid) {
-  //     event.preventDefault();
-  //     props.videoIdSearch(relatedVid);
-  //     console.log("hello");
-  //   }
+  const handleClick = (id) => {
+      props.setVideoId(id)
+  }
 
   const relatedVideos = async () => {
     let response = await axios
@@ -43,7 +41,7 @@ const RelatedVideos = (props) => {
                   <td>
                     <button
                       type="button"
-                    
+                    onClick={() => handleClick(arr)}
                     >
                       <img
                         id="ytplayer"
