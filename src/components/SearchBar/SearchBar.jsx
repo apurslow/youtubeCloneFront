@@ -18,7 +18,7 @@ const SearchBar = (props) => {
     }
 
     return (
-          <form>
+          <form id='theSearchBar'>
              <label htmlFor="searchBar">Search</label>
              <input type="text" onChange={event => onChange(event)} value={text}/>
             <button onClick={event => onClick(event)}>Submit</button>

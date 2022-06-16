@@ -12,7 +12,11 @@ const HomePage = () => {
   const { user } = useContext(AuthContext);
   const [search, setSearch] = useState(null);
   const [videoId, setVideoId] = useState(null);
+<<<<<<< HEAD
+  const api = 'AIzaSyDLSV2GMYdeeeoaTK7-qF443k3VXMbBPUY';
+=======
   const api = 'AIzaSyDn97ZAkDkv5ptUzvUSW_sFht-C1IlR588';
+>>>>>>> 3f9562071c9785b3ef02d46e92c8005bc36cd8d6
 
   const videoSearch = () => {
     if(search)
@@ -25,9 +29,19 @@ const HomePage = () => {
   },[search])
 
   return (
-    <div>
+    <div id="=mainContent" align="center">
       <h1 className="container">Home Page for {user.name}!</h1>
       <SearchBar setSearch={setSearch}/>
+<<<<<<< HEAD
+      
+        <VideoDisplay 
+        width="650"
+        height="450"
+        videoId={videoId}
+        />
+      
+      <NewPost videoId={videoId}/>
+=======
       {videoId &&
       <>
       <VideoDisplay 
@@ -36,6 +50,7 @@ const HomePage = () => {
         videoId={videoId}
       />
       <TitleDescription videoId={videoId} api={api} />
+>>>>>>> 3f9562071c9785b3ef02d46e92c8005bc36cd8d6
       <Post videoId={videoId}/>
       <RelatedVideos videoId={videoId} api={api} />
       </>
