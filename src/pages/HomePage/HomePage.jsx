@@ -4,7 +4,6 @@ import axios from 'axios';
 import AuthContext from "../../context/AuthContext";
 import SearchBar  from "../../components/SearchBar/SearchBar";
 import VideoDisplay from "../../components/VideoDisplay/VideoDisplay";
-import NewPost from "../../components/NewPost/NewPost";
 import Post from "../../components/Post/Post";
 import TitleDescription from "../../components/TitleDescription/TitleDescription";
 
@@ -12,7 +11,7 @@ const HomePage = () => {
   const { user } = useContext(AuthContext);
   const [search, setSearch] = useState(null);
   const [videoId, setVideoId] = useState(null);
-  const api = 'AIzaSyCRiz10pGZ397YAmyCOvCQDDuFNJmUFZE0';
+  const api = 'AIzaSyDn97ZAkDkv5ptUzvUSW_sFht-C1IlR588';
 
   const videoSearch = () => {
     if(search)
@@ -36,7 +35,6 @@ const HomePage = () => {
         videoId={videoId}
       />
       <TitleDescription videoId={videoId} api={api} />
-      <NewPost videoId={videoId}/>
       <Post videoId={videoId}/>
       </>
       }

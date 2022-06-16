@@ -1,15 +1,13 @@
 import axios from 'axios';
-import React, { useState, useContext } from 'react';
-import AuthContext from "../../context/AuthContext";
+import React, { useState} from 'react';
 
 const NewPost = (props) => {
 
     const [text, setText] = useState("");
-    const { user } = useContext(AuthContext);
 
     const addPost = () => {
         axios.post('http://localhost:5000/api/posts/', {
-            name: user.name,
+            name: props.user.name,
             text,
             videoId: props.videoId
         })
