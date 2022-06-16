@@ -1,0 +1,24 @@
+#title_description_div {
+    text-align: left;
+    height: auto;
+    width: 75%;
+    margin: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#title_description {
+    height: fit-content;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    background-color: steelblue;
+    color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 5px;
+    font-size: larger;
+    
+}
+#title_description_content{
+    border-style: solid;
+    border-color: steelblue;
+    padding: 10px;
+}

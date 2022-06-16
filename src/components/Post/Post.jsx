@@ -3,7 +3,7 @@ import axios from 'axios';
 import AuthContext from "../../context/AuthContext";
 import socketIOClient from 'socket.io-client';
 import NewPost from '../NewPost/NewPost';
-
+import './Post.css';
 
 
 const Posts = (props) => {
@@ -29,25 +29,25 @@ const Posts = (props) => {
     useEffect(()=>{
         videoId.current = props.videoId;
         getPosts();
-    },[props.videoId]);
+    },[props.videoId,getPosts]);
 
     useEffect(()=>{
         socket.on("new-post", () => {
             getPosts();
         });
-    },[]);
+    },[getPosts]);
 
     useEffect(()=>{
         socket.on("updated-post", () => {
             getPosts();
         });
-    },[]);
+    },[getPosts]);
 
     useEffect(()=>{
         socket.on("deleted-post", () => {
             getPosts();
         });
-    },[]);
+    },[getPosts]);
 
     const deletePost = (postId) => {
         axios.delete(`http://localhost:5000/api/posts/${postId}`)
@@ -60,14 +60,14 @@ const Posts = (props) => {
           <NewPost videoId={props.videoId} user={user}/>
        {posts && posts.map((post, index) => {
            return(
-                <div key={index}>
-                    <p>{post.name}</p>
-                    <p>{post.text}</p>
-                    <p>{post.date}</p>
+                <div id='thePostBoxes' key={index}>
+                    <p id='postName'>{post.name}</p>
+                    <p id='postText'>{post.text}</p>
+                    <p id='postDate'>{post.date}</p>
                     {user.name === post.name ? 
                         <div>
-                            <button>Edit</button>
-                            <button onClick={()=>
+                            <button class="postButtons">Edit</button>
+                            <button class="postButtons" onClick={()=>
                                  deletePost(post._id)
                             }>Delete</button>
                         </div> :

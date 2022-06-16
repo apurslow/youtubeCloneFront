@@ -1,0 +1,44 @@
+#postName{
+font-weight: bold;
+padding-top: 10px;
+font-size: larger;
+}
+#postText{
+    margin: 10px;
+    padding: 20px;
+    height: fit-content;
+    width: 90%;
+    background-color: white;
+    color: steelblue;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: left;
+    
+}
+#postDate{
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: smaller;
+}
+#thePostBoxes{
+    width: fit-content;
+    height: fit-content;
+    background-color: steelblue;
+    color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 20px;
+}
+.postButtons{
+    color: white;
+    border-style: solid;
+    border-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 10px;
+   
+    font-weight: bold;
+}
+
+.postButtons:hover {
+    background: white;
+    color: steelblue;
+    cursor: pointer;
+  }

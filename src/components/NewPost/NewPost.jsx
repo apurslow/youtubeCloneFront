@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState} from 'react';
+import './NewPost.css';
 
 const NewPost = (props) => {
 
@@ -26,10 +27,10 @@ const NewPost = (props) => {
       setText("");
     }
     return (
-        <form>
-            <label htmlFor="post">Post: </label>
-            <textarea name="post" id="post" cols="30" rows="10" onChange={(event => onChange(event))} value={text}></textarea>
-            <button onClick={event => postSubmit(event)}>Post</button>
+        <form id='newPostBox'>
+            <label id='newPostPreText' htmlFor="post">Post: </label>
+            <textarea  name="post" id="postBox" cols="30" rows="10" onChange={(event => onChange(event))} value={text}></textarea>
+            <button id='postButton' onClick={event => postSubmit(event)}>Post</button>
         </form>
     );
   };

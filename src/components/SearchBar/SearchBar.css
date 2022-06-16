@@ -3,11 +3,31 @@
     align-items: center;
     text-align: center;
     margin: 50px;
-    padding: 25px;
+    padding: 5px;
+    background-color: steelblue;
+    color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-weight: bold;
+    width: 90%;
+    font-size: x-large;
+
 }
 label {
     margin: 10px;
 }
-button {
+#searchButton {
     margin: 10px;
+    color: white;
+    border-style: solid;
+    border-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#searchBody{
+    float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-right: 16px;
+  font-size: 17px;
 }

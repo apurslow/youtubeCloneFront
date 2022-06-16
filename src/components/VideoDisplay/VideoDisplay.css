@@ -3,11 +3,9 @@
    width: auto;
 }
 iframe {
-    height: 900px;
-    width: 1300px;
+    height: 750px;
+    width: 90%;
     transition: width 3s, height 0.5s;
-}
-iframe:hover {
-    height: 5px;
-    width: 100px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }

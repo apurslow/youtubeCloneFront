@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
+import './TitleDescription.css'
 
 const TitleDescription = ({videoId, api}) => {
 
@@ -17,12 +18,12 @@ const TitleDescription = ({videoId, api}) => {
 
     useEffect(()=>{
         getTitleDescription();
-    },[videoId]);
+    },[videoId,getTitleDescription]);
 
     return (
-      <div>
-          <p>{title}</p>
-          <p>{description}</p>
+      <div id='title_description_div'>
+          <p id='title_description'>{title}</p>
+          <p id='title_description_content'>{description}</p>
       </div>
     );
   };

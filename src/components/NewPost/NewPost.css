@@ -1,0 +1,20 @@
+#newPostBox{
+    background-color: steelblue;
+    width: 75%;
+    color:white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#postBox{
+    width: 50%;
+    height: 30px;
+}
+#postButton{
+    margin: 10px;
+    font-weight: bold;
+    color: white;
+    border-color: white;
+}
+#newPostPreText{
+    font-weight: bold;
+    font-size: x-large;
+}
