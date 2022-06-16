@@ -15,7 +15,6 @@ const SearchBar = (props) => {
         event.preventDefault();
         event.stopPropagation();
         props.setSearch(text);
-        setText("");
     }
 
     return (

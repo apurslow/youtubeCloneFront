@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 
+
 const AuthContext = createContext();
 
 export default AuthContext;
@@ -14,6 +15,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(() => decodedToken);
   const [isServerError, setIsServerError] = useState(false);
   const navigate = useNavigate();
+
 
   const registerUser = async (registerData) => {
     console.log("registerdata",registerData);

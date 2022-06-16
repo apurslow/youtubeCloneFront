@@ -1,28 +1,78 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext, useRef} from 'react';
 import axios from 'axios';
+import AuthContext from "../../context/AuthContext";
+import socketIOClient from 'socket.io-client';
+import NewPost from '../NewPost/NewPost';
+
+
 
 const Posts = (props) => {
-
+    const ENDPOINT = "http://localhost:5000";
+    const socket = socketIOClient(ENDPOINT);
+    
+    const { user } = useContext(AuthContext);
     const [posts, setPosts] = useState([]);
+    const videoId = useRef(props.videoId)
 
-    const getComments =  () => {
-        axios.get(`http://localhost:5000/api/posts/${props.videoId}`)
-            .then((res) => setPosts(res.data))
-            .catch(ex => console.log(`There was an error: ${ex}`));
+
+    const getPosts =  async () => {
+        console.log(props.videoId)
+        const response = await axios.get(`http://localhost:5000/api/posts/${videoId.current}`)
+        setPosts(response.data);
+            // .then((res) => {
+            //     console.log(res.data)
+            //     setPosts(res.data)
+            // })
+            // .catch(ex => console.log(`There was an error: ${ex}`));
     }
 
     useEffect(()=>{
-        getComments();
+        videoId.current = props.videoId;
+        getPosts();
     },[props.videoId]);
+
+    useEffect(()=>{
+        socket.on("new-post", () => {
+            getPosts();
+        });
+    },[]);
+
+    useEffect(()=>{
+        socket.on("updated-post", () => {
+            getPosts();
+        });
+    },[]);
+
+    useEffect(()=>{
+        socket.on("deleted-post", () => {
+            getPosts();
+        });
+    },[]);
+
+    const deletePost = (postId) => {
+        axios.delete(`http://localhost:5000/api/posts/${postId}`)
+            .then(()=> getPosts())
+            .catch(ex => console.log(`There was an error: ${ex}`));
+    }
 
     return (
       <div>
+          <NewPost videoId={props.videoId} user={user}/>
        {posts && posts.map((post, index) => {
            return(
                 <div key={index}>
                     <p>{post.name}</p>
                     <p>{post.text}</p>
                     <p>{post.date}</p>
+                    {user.name === post.name ? 
+                        <div>
+                            <button>Edit</button>
+                            <button onClick={()=>
+                                 deletePost(post._id)
+                            }>Delete</button>
+                        </div> :
+                        <div></div>
+                    }
                 </div>
            );
        })}
