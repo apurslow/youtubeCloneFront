@@ -1,0 +1,13 @@
+#theSearchBar {
+    display: inline-flex;
+    align-items: center;
+    text-align: center;
+    margin: 50px;
+    padding: 25px;
+}
+label {
+    margin: 10px;
+}
+button {
+    margin: 10px;
+}

@@ -11,7 +11,7 @@ const HomePage = () => {
   const { user } = useContext(AuthContext);
   const [search, setSearch] = useState("");
   const [videoId, setVideoId] = useState(null);
-  const api = 'AIzaSyBG3guy9WB82-9GPuQuAFPGRf31YO2tlUU';
+  const api = 'AIzaSyDLSV2GMYdeeeoaTK7-qF443k3VXMbBPUY';
 
   const videoSearch = () => {
       axios.get(`https://www.googleapis.com/youtube/v3/search?q=${search}&key=${api}`)
@@ -23,14 +23,16 @@ const HomePage = () => {
   },[search])
 
   return (
-    <div>
+    <div id="=mainContent" align="center">
       <h1 className="container">Home Page for {user.name}!</h1>
       <SearchBar setSearch={setSearch}/>
-      <VideoDisplay 
+      
+        <VideoDisplay 
         width="650"
         height="450"
         videoId={videoId}
-      />
+        />
+      
       <NewPost videoId={videoId}/>
       <Post videoId={videoId}/>
     </div>

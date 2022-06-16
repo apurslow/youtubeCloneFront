@@ -1,0 +1,13 @@
+#youtubePlayer {
+   height: auto;
+   width: auto;
+}
+iframe {
+    height: 900px;
+    width: 1300px;
+    transition: width 3s, height 0.5s;
+}
+iframe:hover {
+    height: 5px;
+    width: 100px;
+}
