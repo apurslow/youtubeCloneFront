@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import AuthContext from "../../context/AuthContext";
 import useCustomForm from "../../hooks/useCustomForm";
 import { Link } from "react-router-dom";
+import './LoginPage.css';
 
 const LoginPage = () => {
   const { loginUser, isServerError } = useContext(AuthContext);
@@ -18,7 +19,7 @@ const LoginPage = () => {
   }, [isServerError]);
 
   return (
-    <div className="container">
+    <div className="container" id="LoginPageContainer">
       <form className="form" onSubmit={handleSubmit}>
         <label>
           Email:{" "}
@@ -42,7 +43,7 @@ const LoginPage = () => {
           <p className="error">Login failed, incorrect credentials!</p>
         ) : null}
         <Link to="/register">Click to register!</Link>
-        <button>Login!</button>
+        <button id="loginButton">Login!</button>
       </form>
     </div>
   );

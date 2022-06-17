@@ -85,18 +85,18 @@ const Posts = (props) => {
                         <div>
                             <div id={index} style={{display:"none"}}>
                                 <textarea value={updatePost} onChange={(event)=>setUpdatePost(event.target.value)}></textarea>
-                                <button onClick={()=> {
+                                <button id='postButtons' onClick={()=> {
                                     editPost(post._id);
                                     showHideEditDiv(index);
                                     }
                                 }>Update</button>
                             </div>
-                            <button onClick={()=> {
+                            <button id='postButtons' onClick={()=> {
                                 showHideEditDiv(index); 
                                 setUpdatePost(post.text);
                                 }
                             }>Edit</button>
-                            <button onClick={()=>
+                            <button id='postButtons' onClick={()=>
                                  deletePost(post._id)
                             }>Delete</button>
                         </div> :

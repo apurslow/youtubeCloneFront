@@ -27,7 +27,7 @@ font-size: larger;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin: 20px;
 }
-.postButtons{
+#postButtons{
     color: white;
     border-style: solid;
     border-color: white;
@@ -37,7 +37,7 @@ font-size: larger;
     font-weight: bold;
 }
 
-.postButtons:hover {
+#postButtons:hover {
     background: white;
     color: steelblue;
     cursor: pointer;

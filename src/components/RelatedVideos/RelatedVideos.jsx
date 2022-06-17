@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+import './RelatedVideos.css';
 const RelatedVideos = (props) => {
   const [relatedArr, setRelatedArr] = useState("");
 
@@ -27,31 +27,31 @@ const RelatedVideos = (props) => {
 
   return (
     <div>
-      <table>
-        <thead>
+      <table id="relatedVideosTable">
+        <thead id="relatedVideosTableHead">
           <tr>
             <th>Related Videos</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="relatedVideosTableBody">
           {relatedArr && relatedArr.map((arr, index) => {
               console.log(arr);
               return (
-                <tr key={index}>
-                  <td>
-                    <button
+                
+                  <td id="buttonWrap" key={index}>
+                    <button id="youtubeLinkButton"
                       type="button"
                     onClick={() => handleClick(arr)}
                     >
                       <img
-                        id="ytplayer"
+                        id="ytplayerRelated"
                         src={`https://i.ytimg.com/vi/${arr}/default.jpg`}
                         alt="NO IMAGE HERE"
                         frameBorder="0"
                       />
                     </button>
                   </td>
-                </tr>
+                
               );
           })}
         </tbody>
